@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+				 xmlns="http://java.sun.com/xml/ns/javaee"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<servlet>
+    <servlet-name>leaderboard</servlet-name>
+    <servlet-class>com.cse308.tictactoe.LeaderBoardServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>leaderboard</servlet-name>
+    <url-pattern>/leaderboardInfo</url-pattern>
+  </servlet-mapping>
+
+	<!-- <servlet> -->
+  <!--   <servlet-name>leaderboardpage</servlet-name> -->
+	<!-- 	<jsp-file>/leaderboard.jsp</jsp-file> -->
+
+  <!-- </servlet> -->
+
+  <!-- <servlet-mapping> -->
+  <!--   <servlet-name>leaderboardpage</servlet-name> -->
+  <!--   <url-pattern>/leaderboardpage*</url-pattern> -->
+  <!-- </servlet-mapping> -->
+
+
+	<servlet>
+    <servlet-name>SendScore</servlet-name>
+    <servlet-class>com.cse308.tictactoe.SendScoreServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>SendScore</servlet-name>
+    <url-pattern>/sendscore</url-pattern>
+  </servlet-mapping>
+
+
+
+	<!-- <servlet> -->
+  <!--   <servlet-name>TicTacToe</servlet-name> -->
+  <!--   <jsp-file>TicTacToe.jsp</jsp-file> -->
+	<!-- </servlet> -->
+
+	<!-- <servlet-mapping> -->
+  <!--   <servlet-name>TicTacToe</servlet-name> -->
+  <!--   <url-pattern>/TicTacToe.jsp</url-pattern>    -->
+	<!-- </servlet-mapping> -->
+
+	<!-- <servlet> -->
+  <!--   <servlet-name>TicTacToeJS</servlet-name> -->
+  <!--   <jsp-file>/js/TicTacToe.js</jsp-file> -->
+	<!-- </servlet> -->
+
+	<!-- <servlet-mapping> -->
+  <!--   <servlet-name>TicTacToeJS</servlet-name> -->
+  <!--   <url-pattern>/js/*</url-pattern>    -->
+	<!-- </servlet-mapping> -->
+
+
+
+	<filter>
+		<filter-name>MainFilter</filter-name>
+		<filter-class>com.cse308.tictactoe.MainFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>MainFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>ObjectifyFilter</filter-name>
+		<filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ObjectifyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>com.cse308.tictactoe.OfyHelper</listener-class>
+	</listener>
+
+	<welcome-file-list>
+    <welcome-file>Index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>profile</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+</web-app>
